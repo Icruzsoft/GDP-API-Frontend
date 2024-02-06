@@ -4,7 +4,7 @@ import './index.css';
 //import './App.css';
 import HomePage from './pages/HomePage';
 import SolutionsPage from './pages/SolutionsPage';
-import SignUp from './src/components/SignUp';
+import SignUp from './components/SignUp';
 
 const App = () => {
   return (
