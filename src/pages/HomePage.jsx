@@ -37,7 +37,7 @@ const NavBar = () => {
               to="/"
               className="text-gray-700 hover:text-blue-500 transition duration-300"
             >
-              Inicio
+              Home
             </NavLink>
             <NavLink
               to="/SolutionsPage"
