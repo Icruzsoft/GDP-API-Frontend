@@ -10,19 +10,15 @@ const Signup = () => {
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
-
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
   };
-
   const handleLastNameChange = (event) => {
     setLastName(event.target.value);
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission here
