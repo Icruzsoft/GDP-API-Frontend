@@ -9,6 +9,7 @@ import Image from "../images/pexels1.jpg";
 import Image2 from "../images/pexels2.jpg";
 import Image3 from "../images/pexels3.jpg";
 
+
 const NavBar = () => {
   const sliderSettings = {
     dots: true,
@@ -79,7 +80,7 @@ const NavBar = () => {
           {" "}
           {/* Ajusta la altura según sea necesario */}
           <div>
-            <img src={Image} alt="Image 3" />
+            <img src={Image} alt="Image 1" />
           </div>
           <div>
             <img src={Image2} alt="Image 2" />
@@ -93,5 +94,4 @@ const NavBar = () => {
     </div>
   );
 };
-
 export default NavBar;
