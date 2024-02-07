@@ -57,7 +57,6 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              id="firstName"
               value={firstName}
               onChange={(event) => setFirstName(event.target.value)}
               required
@@ -74,7 +73,6 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              id="surName"
               value={surName}
               onChange={(event) => setSurName(event.target.value)}
               required
@@ -91,7 +89,6 @@ const Signup = () => {
             </label>
             <input
               type="email"
-              id="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required
@@ -108,7 +105,6 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              id="phoneNumber"
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
               required
@@ -125,7 +121,6 @@ const Signup = () => {
             </label>
             <input
               type="password"
-              id="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               required
@@ -142,7 +137,6 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              id="addresLine1"
               value={addressLine1}
               onChange={(event) => setAddressLine1(event.target.value)}
               required
@@ -159,7 +153,6 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              id="addresLine2"
               value={addressLine1}
               onChange={(event) => setAddressLine2(event.target.value)}
               required
@@ -176,7 +169,6 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              id="zipCode"
               value={zipCode}
               onChange={(event) => setZipCode(event.target.value)}
               required
