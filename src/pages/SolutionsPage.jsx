@@ -15,7 +15,7 @@ const SolutionsPage = () => {
   const signInSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5153/login/", {
+      const response = await axios.post("http://localhost:5153/api/login/", {
          email,
       });
       if (response.data.success === true) {
