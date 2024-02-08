@@ -5,7 +5,7 @@ import "./index.css";
 import HomePage from "./pages/HomePage";
 import SolutionsPage from "./pages/SolutionsPage";
 import SignUp from "./components/SignUp";
-
+import ContributePage from "./pages/ContributePage";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/SolutionsPage" element={<SolutionsPage />} />
           <Route path="/SignUp" element={<SignUp />} />
-
+          <Route path="/ContributePage" element={<ContributePage />} />
           {/* ... Otras rutas ... */}
         </Routes>
       </Router>

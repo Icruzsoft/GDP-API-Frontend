@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 const SolutionsPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-//  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
 
   // const handleEmailChange = (event) => {
   //   event.preventDefault();
@@ -19,6 +20,7 @@ const SolutionsPage = () => {
         "http://localhost:5153/api/User/login/",
         {
           email,
+          password,
         }
       );
       if (response.data.success === true) {
@@ -52,6 +54,22 @@ const SolutionsPage = () => {
               id="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
+              required
+              className="w-full border border-gray-300 p-2 rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               required
               className="w-full border border-gray-300 p-2 rounded"
             />
