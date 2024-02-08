@@ -16,7 +16,7 @@ const SignUp = () => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  // const [termsAccepted, setTermsAccepted] = useState("");
+  const [checked, handleChange] = useState(false);
 
   const signUpSubmit = async (event) => {
     event.preventDefault();
@@ -35,7 +35,7 @@ const SignUp = () => {
           city,
           state,
           country,
-          termsAccepted,
+          // termsAccepted,
         }
       );
       if (response.data.success === true) {
@@ -252,7 +252,8 @@ const SignUp = () => {
               <input
                 id="cbox1"
                 type="checkbox"
-                checked
+                checked={checked}
+                onChange={handleChange}
                 required
               ></input>
             </label>
