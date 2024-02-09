@@ -38,11 +38,11 @@ const SignUp = () => {
           // termsAccepted,
         }
       );
-      if (response.data.success === true) {
+      if (response.status === 200) {
         console.log(response.data);
-        navigate("/Dashboard");
+        navigate("/SolutionsPage");
       } else {
-        console.log(response.data);
+        
       }
     } catch (error) {
       setError("Something's not working");
