@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import axios from "axios";
 
 const SolutionsPage = () => {
@@ -23,15 +24,14 @@ const SolutionsPage = () => {
           password,
         }
       );
-      if (response.data.success === true) {
-        console.log(response.data);
-        navigate("/ContributePage");
+      if (response.status === 200) {
+       
+        navigate("/Dashboard");
       } else {
-        console.log(response.data);
-        console.log("LogIn failed");
+        
       }
     } catch (error) {
-      setError("Something's wrong");
+      // setError(error.message);
     }
   };
 
@@ -90,7 +90,8 @@ const SolutionsPage = () => {
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-          >
+            onClick={signInSubmit}
+            >
             Next
           </button>
         </form>
