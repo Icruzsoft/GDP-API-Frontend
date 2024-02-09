@@ -40,11 +40,9 @@ const SignUp = () => {
       );
       if (response.data.success === true) {
         console.log(response.data);
-        alert("welcome");
         navigate("/Dashboard");
       } else {
         console.log(response.data);
-        alert("registration error");
       }
     } catch (error) {
       setError("Something's not working");
