@@ -38,7 +38,7 @@ const SignUp = () => {
           // termsAccepted,
         }
       );
-      if (response.data.success === true) {
+      if (response.status === 200) {
         console.log(response.data);
         alert("welcome");
         navigate("/Dashboard");
