@@ -31,7 +31,7 @@ const NavBar = () => {
               Busco Soluciones
             </NavLink>
             <NavLink
-              to="/ContibutePage"
+              to="/ContributePage"
               className="text-gray-700 hover:text-blue-500 transition duration-300"
             >
               Brindo Soluciones
