@@ -4,8 +4,11 @@ import "./index.css";
 //import './App.css';
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import SignUp from "./components/SignUp";
+import SignUpPage from "./pages/SignUpPage";
 import ContributePage from "./pages/ContributePage";
+import SolutionsPage from "./pages/SolutionsPage";
+import DashboardPage from "./pages/DashboardPage";
+
 
 const App = () => {
   return (
@@ -14,8 +17,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/LoginPage" element={<LoginPage />} />
-          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/SignUpPage" element={<SignUpPage />} />
           <Route path="/ContributePage" element={<ContributePage />} />
+          <Route path="/SolutionsPage" element={<SolutionsPage />} />
+          <Route path="/DashboardPage" element={<DashboardPage />} />
           {/* ... Otras rutas ... */}
         </Routes>
       </Router>

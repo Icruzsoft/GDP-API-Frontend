@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Signup = () => {
+const SignUp = () => {
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState("");
-  const [surName, setSurName] = useState("");
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [addressLine1, setAddressLine1] = useState("");
   const [addressLine2, setAddressLine2] = useState("");
-  const [zipCode, setZipCode] = useState("");
+  const [zipCode, setzipCode] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
+  const [checked, handleChange] = useState(false);
 
   const signUpSubmit = async (event) => {
     event.preventDefault();
@@ -22,8 +24,8 @@ const Signup = () => {
       const response = await axios.post(
         "http://localhost:5153/api/User/register",
         {
-          firstName,
-          surName,
+          name,
+          surname,
           email,
           phoneNumber,
           password,
@@ -35,17 +37,14 @@ const Signup = () => {
           country,
         }
       );
-      if (response.data.success === true) {
+      if (response.status === 200) {
         console.log(response.data);
-        navigate("/Dashboard");
+        navigate("/LoginPage");
       } else {
-        console.log(response.data);
-        console.log("LogIn failed");
       }
     } catch (error) {
-      setError("Something's wrong");
+      setError("Something's not working");
     }
-    // Handle form submission here
   };
 
   return (
@@ -53,7 +52,6 @@ const Signup = () => {
       <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
         <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
         <form onSubmit={signUpSubmit}>
-          {/* contenedor para nombre */}
           <div className="mb-4">
             <label
               htmlFor="firstName"
@@ -63,13 +61,13 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              value={firstName}
-              onChange={(event) => setFirstName(event.target.value)}
+              id="firstName"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
               required
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
-          {/* contenedor para apellido */}
           <div className="mb-4">
             <label
               htmlFor="surName"
@@ -79,13 +77,13 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              value={surName}
+              id="surName"
+              value={surname}
               onChange={(event) => setSurName(event.target.value)}
               required
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
-          {/* contenedor para email */}
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -101,23 +99,24 @@ const Signup = () => {
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
-          {/* contenedor para telefono */}
+
           <div className="mb-4">
             <label
-              htmlFor="phone"
+              htmlFor="phoneNumber"
               className="block text-gray-700 text-sm font-bold mb-2"
             >
               Phone Number *
             </label>
             <input
               type="text"
+              id="phoneNumber"
               value={phoneNumber}
               onChange={(event) => setPhoneNumber(event.target.value)}
               required
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
-          {/* contenedor para contraseña */}
+
           <div className="mb-4">
             <label
               htmlFor="password"
@@ -133,7 +132,6 @@ const Signup = () => {
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
-          {/* contenedor para linea de calle 1 */}
           <div className="mb-4">
             <label
               htmlFor="addressLine1"
@@ -143,13 +141,14 @@ const Signup = () => {
             </label>
             <input
               type="text"
+              id="addressLine1"
               value={addressLine1}
               onChange={(event) => setAddressLine1(event.target.value)}
               required
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
-          {/* contenedor para linea de calle 2 */}
+
           <div className="mb-4">
             <label
               htmlFor="addressLine2"
@@ -159,45 +158,115 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              value={addressLine1}
+              id="addressLine2"
+              value={addressLine2}
               onChange={(event) => setAddressLine2(event.target.value)}
               required
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
-          {/* contenedor para codigo postal */}
+
           <div className="mb-4">
             <label
               htmlFor="zipCode"
               className="block text-gray-700 text-sm font-bold mb-2"
             >
-              zip Code *
+              Zip Code *
             </label>
             <input
               type="text"
+              id="zipCode"
               value={zipCode}
-              onChange={(event) => setZipCode(event.target.value)}
+              onChange={(event) => setzipCode(event.target.value)}
               required
               className="w-full border border-gray-300 p-2 rounded"
             />
           </div>
-          {/* botón para asignar valores a backend */}
+
+          <div className="mb-4">
+            <label
+              htmlFor="city"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              City *
+            </label>
+            <input
+              type="text"
+              id="city"
+              value={city}
+              onChange={(event) => setCity(event.target.value)}
+              required
+              className="w-full border border-gray-300 p-2 rounded"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="state"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              State *
+            </label>
+            <input
+              type="text"
+              id="state"
+              value={state}
+              onChange={(event) => setState(event.target.value)}
+              required
+              className="w-full border border-gray-300 p-2 rounded"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="country"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Country *
+            </label>
+            <input
+              type="text"
+              id="country"
+              value={country}
+              onChange={(event) => setCountry(event.target.value)}
+              required
+              className="w-full border border-gray-300 p-2 rounded"
+            />
+          </div>
+          {/* checkbox para validar terminos y condiciones */}
+          <div className="mb-4">
+            <label
+              htmlFor="checkbox"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Acepto terminos y condiciones
+              <input
+                id="cbox1"
+                type="checkbox"
+                checked={checked}
+                onChange={handleChange}
+                required
+              ></input>
+            </label>
+          </div>
           <button
             type="submit"
+            onClick={signUpSubmit}
             className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
           >
             Sign Up
           </button>
         </form>
         <Link
-          to="/SolutionsPage"
+          to="/LoginPage"
           className="mt-4 block text-blue-500 hover:underline"
         >
           Already have an account? Sign In
         </Link>
       </div>
+      {error && <p>{error}</p>}
     </div>
   );
 };
 
-export default Signup;
+export default SignUp;

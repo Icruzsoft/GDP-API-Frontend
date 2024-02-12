@@ -52,9 +52,14 @@ const NavBar = () => {
           </nav>
 
           {/* Icono de Usuario */}
-          <div>
-            <FontAwesomeIcon icon={faAddressCard} className="text-xl" />
-          </div>
+          <form>
+            <NavLink
+            to="LoginPage">
+              <div>
+                <FontAwesomeIcon icon={faAddressCard} className="text-xl" />
+              </div>
+            </NavLink>
+          </form>
         </div>
       </div>
     </div>

@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
-
-  // const handleEmailChange = (event) => {
-  //   event.preventDefault();
-  // };
 
   const signInSubmit = async (event) => {
     event.preventDefault();
@@ -23,15 +19,12 @@ const LoginPage = () => {
           password,
         }
       );
-      if (response.data.success === true) {
-        console.log(response.data);
-        navigate("/ContributePage");
+      if (response.status === 200) {
+        navigate("/DashboardPage");
       } else {
-        console.log(response.data);
-        console.log("LogIn failed");
       }
     } catch (error) {
-      setError("Something's wrong");
+      // setError(error.message);
     }
   };
 
@@ -76,7 +69,7 @@ const LoginPage = () => {
           </div>
           <div className="mb-4">
             <div className="flex justify-between">
-              <Link to="/SignUp" className="text-blue-500 hover:underline">
+              <Link to="/SignUpPage" className="text-blue-500 hover:underline">
                 Don't have an account? Sign Up
               </Link>
               <Link
@@ -90,6 +83,7 @@ const LoginPage = () => {
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            onClick={signInSubmit}
           >
             Next
           </button>
