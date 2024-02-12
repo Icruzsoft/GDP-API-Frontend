@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 const SolutionsPage = () => {
   const navigate = useNavigate();
@@ -15,9 +16,13 @@ const SolutionsPage = () => {
   const signInSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5153/api/login/", {
-         email,
-      });
+      const response = await axios.post(
+        "http://localhost:5153/api/User/login/",
+        {
+          email,
+          password,
+        }
+      );
       if (response.data.success === true) {
         console.log(response.data);
         navigate("/ContributePage");
@@ -28,7 +33,6 @@ const SolutionsPage = () => {
     } catch (error) {
       setError("Something's wrong");
     }
-    // Handle form submission here
   };
 
   return (
@@ -53,6 +57,8 @@ const SolutionsPage = () => {
               required
               className="w-full border border-gray-300 p-2 rounded"
             />
+          </div>
+          <div className="mb-4">
             <label
               htmlFor="password"
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -60,8 +66,8 @@ const SolutionsPage = () => {
               Password
             </label>
             <input
-              id="password"
               type="password"
+              id="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               required
