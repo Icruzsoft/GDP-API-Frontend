@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 
-const SolutionsPage = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -100,4 +100,4 @@ const SolutionsPage = () => {
   );
 };
 
-export default SolutionsPage;
+export default LoginPage;

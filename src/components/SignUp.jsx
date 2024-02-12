@@ -19,16 +19,22 @@ const Signup = () => {
   const signUpSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5153/api/login/", {
-        firstName,
-        surName,
-        email,
-        phoneNumber,
-        password,
-        addressLine1,
-        addressLine2,
-        zipCode,
-      });
+      const response = await axios.post(
+        "http://localhost:5153/api/User/register",
+        {
+          firstName,
+          surName,
+          email,
+          phoneNumber,
+          password,
+          addressLine1,
+          addressLine2,
+          zipCode,
+          city,
+          state,
+          country,
+        }
+      );
       if (response.data.success === true) {
         console.log(response.data);
         navigate("/Dashboard");

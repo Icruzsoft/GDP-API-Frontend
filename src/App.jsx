@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 //import './App.css';
 import HomePage from "./pages/HomePage";
-import SolutionsPage from "./pages/SolutionsPage";
+import LoginPage from "./pages/LoginPage";
 import SignUp from "./components/SignUp";
 import ContributePage from "./pages/ContributePage";
 
@@ -13,7 +13,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/SolutionsPage" element={<SolutionsPage />} />
+          <Route path="/LoginPage" element={<LoginPage />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/ContributePage" element={<ContributePage />} />
           {/* ... Otras rutas ... */}
@@ -22,5 +22,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
