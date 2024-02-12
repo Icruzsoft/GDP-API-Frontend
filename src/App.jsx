@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import SolutionsPage from "./pages/SolutionsPage";
 import SignUp from "./components/SignUp";
 import ContributePage from "./pages/ContributePage";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/SolutionsPage" element={<SolutionsPage />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/ContributePage" element={<ContributePage />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
           {/* ... Otras rutas ... */}
         </Routes>
       </Router>
