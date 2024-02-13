@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Image from '../images/pexels1.jpg';
 import Image2 from '../images/pexels2.jpg';
 import Image3 from '../images/pexels3.jpg';
+import Footer from './Footer';
 
 const NavBar = () => {
   const sliderSettings = {
@@ -87,6 +88,7 @@ const NavBar = () => {
           {/* Agrega más elementos según sea necesario */}
         </Slider>
       </div>
+      <Footer/>
     </div>
   );
 };
