@@ -6,7 +6,7 @@ import whats from "../images/footer/whats.png";
 import Logo from "../images/footer/Logo.png";
 function Footer() {
   return (
-    <div className="Footer" style={{ position: "absolute", bottom: 0 }}>
+    <div className="flex items-center h-16 bg-white px-4 border-b">
       <div className="sb_footer">
         <div className="links">
           <div className="socialmedia1">
