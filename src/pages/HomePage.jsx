@@ -1,11 +1,26 @@
 import React from "react";
 import NavBar from "../components/Navbar";
+// import Footer from "../components/Footer";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "../images/homePage/pexels1.jpg";
 import Image2 from "../images/homePage/pexels2.jpg";
 import Image3 from "../images/homePage/pexels3.jpg";
+import Image4 from "../images/homePage/Logo1.jpg";
+import Image5 from "../images/homePage/Logo2.jpg";
+import Image6 from "../images/homePage/Logo3.jpg";
+import Image7 from "../images/homePage/Logo4.jpg";
+import Image8 from "../images/homePage/Logo5.jpg";
+import Image9 from "../images/homePage/Logo6.jpg";
+// import Image10 from "../images/homePage/Logo7.jpg";
+// import Image11 from "../images/homePage/Logo8.jpg";
+// import Image12 from "../images/homePage/Logo9.jpg";
+// import Image13 from "../images/homePage/Logo10.jpg";
+// import Image14 from "../images/homePage/Logo11.jpg";
+// import Image15 from "../images/homePage/Logo12.jpg";
+import Image16 from "../images/homePage/Logo13.jpg";
+import Image17 from "../images/homePage/Logo14.jpg";
 
 const HomePage = () => {
   const sliderSettings = {
@@ -14,6 +29,8 @@ const HomePage = () => {
     speed: 500,
     slidesToShow: 1, // Mostrar solo una imagen a la vez
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3500, // Cambia la imagen cada 2 segundos
   };
 
   return (

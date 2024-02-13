@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
 
-  const signInSubmit = async (event) => {
+  const logInSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
@@ -24,10 +24,9 @@ const LoginPage = () => {
       } else {
       }
     } catch (error) {
-      // setError(error.message);
+        setError(error.message);
     }
   };
-
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -35,7 +34,7 @@ const LoginPage = () => {
         <h1 className="text-2xl font-bold mb-4">
           Sign in to access Community Lab Alliance
         </h1>
-        <form onSubmit={signInSubmit}>
+        <form onSubmit={logInSubmit}>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -84,7 +83,7 @@ const LoginPage = () => {
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-            onClick={signInSubmit}
+            onClick={logInSubmit}
           >
             Next
           </button>
