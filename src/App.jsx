@@ -5,6 +5,7 @@ import './index.css';
 import HomePage from './components/HomePage';
 import SolutionsPage from './components/SolutionsPage';
 import SignUp from './components/SignUp';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           {/* ... Otras rutas ... */}
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 };
