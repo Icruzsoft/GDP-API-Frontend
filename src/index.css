@@ -1,4 +1,7 @@
 @import '@fortawesome/fontawesome-svg-core/styles.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 #root {
   min-height: 100vh;
@@ -20,6 +23,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
 }
 
 
