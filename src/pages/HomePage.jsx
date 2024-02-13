@@ -3,9 +3,9 @@ import NavBar from "../components/Navbar";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "../images/pexels1.jpg";
-import Image2 from "../images/pexels2.jpg";
-import Image3 from "../images/pexels3.jpg";
+import Image from "../images/homePage/pexels1.jpg";
+import Image2 from "../images/homePage/pexels2.jpg";
+import Image3 from "../images/homePage/pexels3.jpg";
 
 const HomePage = () => {
   const sliderSettings = {
