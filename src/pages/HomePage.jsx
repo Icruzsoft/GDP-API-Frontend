@@ -144,7 +144,7 @@ const NavBar = () => {
             <img src={Image13} alt="Logo 10" className="mx-2" />
             <img src={Image14} alt="Logo 11" className="mx-2" />
             <img src={Image15} alt="Logo 12" className="mx-2" />
-        </Slider>
+      </Slider>
       </div><br/><br/><br/>
 
 
