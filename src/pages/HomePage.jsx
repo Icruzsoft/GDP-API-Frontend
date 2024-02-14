@@ -28,72 +28,88 @@ const HomePage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white shadow">
-      <NavBar />
-      {/* Contenedor inferior con carrusel */}
-      <div className="flex-grow p-4">
-        {/* el classname:"h-96 w-full" son los puntos del carrusel de fotos */}
-        <Slider {...sliderSettings} className="h-96 w-full">
-          {" "}
-          {/* Ajusta la altura según sea necesario */}
-          <div>
-            <img src={Image} alt="Image 1" />
-          </div>
-          <div>
-            <img src={Image2} alt="Image 2" />
-          </div>
-          <div>
-            <img src={Image3} alt="Image 3" />
-          </div>
-          {/* Agrega más elementos según sea necesario */}
-        </Slider>
+    <div className="flex flex-col">
+      <div className="flex flex-col min-h-screen bg-white">
+        <NavBar />
+        {/* Contenedor inferior con carrusel */}
+        <div className="flex-grow p-4 bg-white mb-8">
+          {/* el classname:"h-96 w-full" son los puntos del carrusel de fotos */}
+          <Slider {...sliderSettings} className="h-96 w-full m-8">
+            {/* Ajusta la altura según sea necesario */}
+            <div>
+              <img src={Image} alt="Image 1" />
+            </div>
+            <div>
+              <img src={Image2} alt="Image 2" />
+            </div>
+            <div>
+              <img src={Image3} alt="Image 3" />
+            </div>
+            {/* Agrega más elementos según sea necesario */}
+          </Slider>
+        </div>
       </div>
-      {/* Fila de imágenes */}
-      <div className="flex justify-center mt-8">
-        <img src={Image4} alt="Logo 1" className="w-24 mx-2" />
-        <img src={Image5} alt="Logo 2" className="w-24 mx-2" />
-        <img src={Image6} alt="Logo 3" className="w-24 mx-2" />
-        <img src={Image7} alt="Logo 4" className="w-24 mx-2" />
-        <img src={Image8} alt="Logo 5" className="w-24 mx-2" />
-        <img src={Image9} alt="Logo 6" className="w-24 mx-2" />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div className="flex flex-col bg-white shadow mt-8">
+        {/* Fila de imágenes */}
+        <div className="flex justify-center w-full">
+          <img src={Image4} alt="Los Canastos" className="flex w-24 mt-8" />
+          <img src={Image5} alt="A TEMPORE" className="flex w-24 mt-8" />
+          <img src={Image6} alt="zena" className="flex w-24 mt-8" />
+          <img src={Image7} alt="ABBA logistic" className="flex w-24 mt-8" />
+          <img src={Image8} alt="Thermo king" className="flex w-24 mt-8" />
+          <img src={Image9} alt="Dulce Noviembre" className="flex w-24 mt-8" />
+        </div>
       </div>
-      {/* Img de brindo y busco soluciones */}
-      {/* <div className="flex justify-center mt-8">
-        <img src={Image16} alt="Logo 13" />
-      </div> */}
-      <br />
-      <br />
-      <br />
-      <br />
-      <center>
-        <h1 style={{ color: "green", fontSize: "35px" }}>¿Cómo funciona?</h1>
+      <div className="flex flex-col bg-white shadow">
+        <br />
+        <br />
+        <div className="flex justify-center mt-8">
+          <img src={Image16} alt="Logo 13" />
+        </div>
+        <br />
+        <br />
+        <center>
+          <h1 style={{ color: "green", fontSize: "35px" }}>¿Cómo funciona?</h1>
 
-        <p style={{ color: "black", fontSize: "22px" }}>
-          Somos la única plataforma en español que conecta,gestiona y capacita
-          equipos freelance para ofrecer
-          <br /> soluciones integrales para empresas
-        </p>
-      </center>
-      {/* Imagen de contacto */}
-      {/* <div className="flex justify-center mt-8">
-        <img src={Image17} alt="Logo 14" />
-      </div> */}
-      <br />
-      <br />
-      <br />
-      {/* Rectángulo gris */}
-      {/* <div
-        style={{
-          backgroundColor: "rgba(242, 242, 242, 0.9)",
-          width: "100%",
-          height: "540px",
-          margin: "auto",
-        }}
-      ></div> */}
-      <br />
-      <br />
-      <br />
-      {/* <Footer/> */}
+          <p style={{ color: "black", fontSize: "22px" }}>
+            Somos la única plataforma en español que conecta,gestiona y capacita
+            equipos freelance para ofrecer
+            <br /> soluciones integrales para empresas
+          </p>
+        </center>
+        {/* Imagen de contacto */}
+        <div className="flex justify-center mt-8">
+          <img src={Image17} alt="Logo 14" />
+        </div>
+        <br />
+        <br />
+        <br />
+        {/* Rectángulo gris */}
+        <div
+          style={{
+            backgroundColor: "rgba(242, 242, 242, 0.9)",
+            width: "100%",
+            height: "540px",
+            margin: "auto",
+          }}
+        ></div>
+        <br />
+        <br />
+        <br />
+        {/* <Footer/> */}
+      </div>
     </div>
   );
 };
