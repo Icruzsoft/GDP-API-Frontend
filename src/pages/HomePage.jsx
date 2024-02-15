@@ -61,6 +61,10 @@ const HomePage = () => {
       <br />
       <br />
       <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="flex flex-col bg-white shadow mt-8">
         {/* Fila de imágenes */}
         <div className="flex justify-center w-full">
