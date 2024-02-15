@@ -32,7 +32,7 @@ const HomePage = () => {
       <div className="flex flex-col min-h-screen bg-white">
         <NavBar />
         {/* Contenedor inferior con carrusel */}
-        <div className="flex-grow p-4 bg-white mb-8">
+        <div className="p-4 bg-white mb-8 overflow-hidden">
           {/* el classname:"h-96 w-full" son los puntos del carrusel de fotos */}
           <Slider {...sliderSettings} className="h-96 w-full m-8">
             {/* Ajusta la altura según sea necesario */}
@@ -49,22 +49,7 @@ const HomePage = () => {
           </Slider>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
       <div className="flex flex-col bg-white shadow mt-8">
         {/* Fila de imágenes */}
         <div className="flex justify-center w-full">

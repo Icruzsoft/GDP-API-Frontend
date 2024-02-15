@@ -25,32 +25,42 @@ const SignUp = () => {
   const signUpSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5153/api/User/register",
-        {
-          name,
-          surname,
-          email,
-          phoneNumber,
-          password,
-          addressLine1,
-          addressLine2,
-          zipCode,
-          city,
-          state,
-          country,
-        }
-      );
+
       if (step === 1) {
         if (!isValidEmail(email)) {
           setEmailError("Invalid email address");
           return;
         }
         setStep(step + 1);
+        return;
+      }
+      // Agregar valores de primer formulario a un objeto
+      // Navegar a nuevo form
+      // if step === 2
+      // Agregar valores de segundo formulario al objeto
+      // Enviar post request con el objeto
+      if (step === 2) {
+        const response = await axios.post(
+          "http://localhost:5153/api/User/register",
+          {
+            name,
+            surname,
+            email,
+            phoneNumber,
+            password,
+            addressLine1,
+            addressLine2,
+            zipCode,
+            city,
+            state,
+            country,
+          }
+        );
         if (response.status === 200) {
           console.log(response.data);
           navigate("/LoginPage");
         }
+
       }
     } catch (error) {
       setError("Something's not working");
@@ -138,9 +148,8 @@ const SignUp = () => {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 required
-                className={`w-full border ${
-                  emailError ? "border-red-500" : "border-gray-300"
-                } p-2 rounded-lg`}
+                className={`w-full border ${emailError ? "border-red-500" : "border-gray-300"
+                  } p-2 rounded-lg`}
               />
               {emailError && (
                 <p className="text-red-500 text-sm mt-1">{emailError}</p>
