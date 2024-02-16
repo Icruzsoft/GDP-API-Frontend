@@ -1,12 +1,12 @@
 import React from "react";
-import fb from "../images/fb.png";
-import insta from "../images/insta.png";
-import whats from "../images/whats.png";
-import Logo from "../images/Logo.png";
+import fb from "../images/footer/fb.png";
+import insta from "../images/footer/insta.png";
+import whats from "../images/footer/whats.png";
+import Logo from "../images/footer/Logo.png";
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-4 px-4 grid grid-cols-2 items-center gap-4 absolute bottom-0 w-full">
+    <footer className="bg-gray-800 text-white py-4 px-4 grid grid-cols-2 items-center gap-4 w-full">
       <div className="flex items-center gap-4">
         <img
           src={Logo}
