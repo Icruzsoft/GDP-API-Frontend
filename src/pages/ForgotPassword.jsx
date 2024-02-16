@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { loginOtp, requestOTP, resetPassword } from "../components/Data/ResetPassword";
 
 const ForgotPassword = () => {
   const [step, setStep] = useState(1);
@@ -14,6 +15,8 @@ const ForgotPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [isValidNewPassword, setIsValidNewPassword] = useState(true);
+  const [token, setToken] = useState("");
+
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -37,16 +40,27 @@ const ForgotPassword = () => {
     event.preventDefault();
     if (!isValidEmail(email)) {
       setEmailError("Invalid email address");
-    } else {
-      setEmailError("");
-      setStep(2);
+      return;
     }
+    requestOTP(email, true);
+    setEmailError("");
+    setStep(2);
+
   };
-  const handleSubmitStep2 = (event) => {
+  const handleSubmitStep2 = async (event) => {
     event.preventDefault();
-    // Realizar validaciones necesarias para el paso 2
-    // Si las validaciones son exitosas, establecer el paso en 3
-    setStep(3);
+    try {
+      const response = await loginOtp(email, otpCode);
+      if (response.status === 200) {
+        setToken(response.data.token);
+        setStep(3);
+      } else {
+        // Handle non-200 status code here
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error here, if needed
+    }
   };
   const handleSubmitStep3 = (event) => {
     event.preventDefault();
@@ -55,6 +69,9 @@ const ForgotPassword = () => {
       return;
     };
     setPasswordsMatch(true);
+    console.log(token);
+    if (token === "") { return; }
+    resetPassword(newPassword, confirmPassword, token);
     // Continuar con el envío del formulario si las contraseñas coinciden
   };
   const prevStep = () => {
@@ -75,7 +92,7 @@ const ForgotPassword = () => {
   }, []);
   const handleSendOtp = () => {
     // Simulate sending OTP message
-    console.log("OTP sent!");
+
     setIsOtpButtonDisabled(true); // Disable the button
     setCountdown(60); // Reset countdown
     const countdownInterval = setInterval(() => {
@@ -188,33 +205,33 @@ const ForgotPassword = () => {
                   New Password <span className="text-red-500">*</span>
                 </label>
                 <input
-                    type="password"
-                    id="newPassword"
-                    value={newPassword}
-                    onChange={handleNewPasswordChange}
-                    required
-                    className={`w-full border ${!isValidNewPassword ? "border-red-500" : "border-gray-300"} p-2 rounded-lg`}
-                  />
-                  {!isValidNewPassword && (
-                    <p className="text-red-500 text-sm mt-1">Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.</p>
-                  )}
-                </div>
+                  type="password"
+                  id="newPassword"
+                  value={newPassword}
+                  onChange={handleNewPasswordChange}
+                  required
+                  className={`w-full border ${!isValidNewPassword ? "border-red-500" : "border-gray-300"} p-2 rounded-lg`}
+                />
+                {!isValidNewPassword && (
+                  <p className="text-red-500 text-sm mt-1">Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.</p>
+                )}
+              </div>
               <div className="mb-4">
                 <label htmlFor="confirmPassword" className="block text-gray-700 text-sm font-semibold mb-1">
                   Confirm New Password <span className="text-red-500">*</span>
                 </label>
                 <input
-                    type="password"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={handleConfirmPasswordChange}
-                    required
-                    className={`w-full border ${!passwordsMatch ? "border-red-500" : "border-gray-300"} p-2 rounded-lg`}
-                  />
-                  {!passwordsMatch && (
-                    <p className="text-red-500 text-sm mt-1">Passwords do not match.</p>
-                  )}
-                </div>
+                  type="password"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={handleConfirmPasswordChange}
+                  required
+                  className={`w-full border ${!passwordsMatch ? "border-red-500" : "border-gray-300"} p-2 rounded-lg`}
+                />
+                {!passwordsMatch && (
+                  <p className="text-red-500 text-sm mt-1">Passwords do not match.</p>
+                )}
+              </div>
               <div className="flex items-center justify-center">
                 <button
                   type="submit"
