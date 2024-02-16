@@ -10,6 +10,7 @@ import SolutionsPage from "./pages/SolutionsPage";
 import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import DashboardPage from "./pages/DashboardPage";
+import ForgotPassword from './pages/ForgotPassword'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/AboutPage" element={<AboutPage />} />
           <Route path="/BlogPage" element={<BlogPage />} />
           <Route path="/DashboardPage" element={<DashboardPage />} />
+          <Route path="/ForgotPassword" element={<ForgotPassword />}  />
           {/* ... Otras rutas ... */}
         </Routes>
       </Router>
