@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBriefcase, faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import LogoH from "../images/homePage/Logo150.png";
 
 const NavBar = () => {
   return (
@@ -10,8 +11,7 @@ const NavBar = () => {
       <div className="flex items-center h-16 bg-white px-4 border-b">
         {/* Logo y Nombre de la Empresa a la izquierda con el icono de "briefcase" */}
         <div className="flex items-center">
-          <FontAwesomeIcon icon={faBriefcase} className="text-2xl mr-2" />
-          <span className="text-2xl">IconoLogo</span>
+          <img src={LogoH} className="h-15 w-4/5" alt="logo oficial Horizontal" />
         </div>
         {/* Navegación y Icono de Usuario a la derecha */}
         <div className="flex items-center space-x-4 ml-auto">
@@ -53,8 +53,7 @@ const NavBar = () => {
 
           {/* Icono de Usuario */}
           <form>
-            <NavLink
-            to="LoginPage">
+            <NavLink to="LoginPage">
               <div>
                 <FontAwesomeIcon icon={faAddressCard} className="text-xl" />
               </div>
