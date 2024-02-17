@@ -6,7 +6,7 @@ import Logo from "../images/Logo.png";
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-4 px-4 grid grid-cols-2 items-center gap-4 absolute bottom-0 w-full">
+    <footer className="bg-gray-800 text-white py-4 px-4 grid grid-cols-2 items-center gap-4 w-full mt-auto">
       <div className="flex items-center gap-4">
         <img src={Logo} alt="Community Lab Alliance Logo" className="w-12 h-12 rounded-full" />
         <a href="#" className="font-bold text-xl">Community Lab Alliance</a>
