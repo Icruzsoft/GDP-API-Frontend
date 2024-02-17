@@ -109,7 +109,6 @@ const HomePage = () => {
         <br />
         <center>
           <h1 style={{ color: "#B3D433", fontSize: "30px" }}>¿Cómo funciona?</h1> <br/> 
-
           <p style={{ color: "black", fontSize: "22px" }}>Somos la única plataforma en español que conecta,gestiona y capacita equipos freelance para ofrecer
             <br/> soluciones integrales para empresas
           </p>
@@ -123,10 +122,8 @@ const HomePage = () => {
         <br />
         {/* Rectángulo gris */}
         <div style={{ backgroundColor: "rgba(242, 242, 242, 0.9)", width: "100%", height: "540px", margin: "auto", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}> 
-
           {/* Texto de testimonios */}
           <h1 style={{ color: "#013A51", fontSize: "35px", marginBottom: "20px" }}>Testimonios</h1>
-
           {/* Rectángulo personalizado */}
           <div style={{ backgroundColor: "rgba(242, 242, 242, 0.9)", width: "56%", height: "400px", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
             {/* Columna 1 */}
@@ -139,7 +136,6 @@ const HomePage = () => {
               
               <p style={{ color: "#B3D433", fontSize: "18px", marginBottom: "20px" }}> (Francisco- Freelance)</p>
             </div>
-            
             {/* Columna 2 */}
             <div style={{ width: "50%", marginBottom: "20px", textAlign: "center" }}>
               <h2 style={{ color: "#1F76B7", fontSize: "18px", marginBottom: "20px", fontStyle: "italic" }} >“Gracias a su programa de digitalización tenemos mejor control de nuestros 
