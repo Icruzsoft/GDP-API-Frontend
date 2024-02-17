@@ -1,69 +1,69 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
-const Signup = () => {
+const SignUp = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
   const [addressLine1, setAddressLine1] = useState("");
   const [addressLine2, setAddressLine2] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [country, setCountry] = useState("");
+  const [zipCode, setzipCode] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [checked, handleChange] = useState(false);
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-    setEmailError("");
-  };
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-  const handlePhoneNumberChange = (event) => {
-    setPhoneNumber(event.target.value);
-  };
-  const handleAddressLine1Change = (event) => {
-    setAddressLine1(event.target.value);
-  };
-  const handleAddressLine2Change = (event) => {
-    setAddressLine2(event.target.value);
-  };
-  const handleZipCodeChange = (event) => {
-    setZipCode(event.target.value);
-  };
-  const handleCountryChange = (event) => {
-    setCountry(event.target.value);
-  };
-  const handleCityChange = (event) => {
-    setCity(event.target.value);
-  };
-  const handleStateChange = (event) => {
-    setState(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
+  const signUpSubmit = async (event) => {
     event.preventDefault();
-    if (step === 1) {
-      if (!isValidEmail(email)) {
-        setEmailError("Invalid email address");
+    try {
+
+      if (step === 1) {
+        if (!isValidEmail(email)) {
+          setEmailError("Invalid email address");
+          return;
+        }
+        setStep(step + 1);
         return;
       }
-      setStep(step + 1);
-    } else {
+      // Agregar valores de primer formulario a un objeto
+      // Navegar a nuevo form
+      // if step === 2
+      // Agregar valores de segundo formulario al objeto
+      // Enviar post request con el objeto
+      if (step === 2) {
+        const response = await axios.post(
+          "http://localhost:5153/api/User/register",
+          {
+            name,
+            surname,
+            email,
+            phoneNumber,
+            password,
+            addressLine1,
+            addressLine2,
+            zipCode,
+            city,
+            state,
+            country,
+          }
+        );
+        if (response.status === 200) {
+          console.log(response.data);
+          navigate("/LoginPage");
+        }
 
+      }
+    } catch (error) {
+      setError("Something's not working");
     }
   };
 
@@ -94,92 +94,113 @@ const Signup = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
         <a href="/HomePage">
-          <img id="logo" src="/src/images/logoCLA.png" alt="Community Lab Alliance Logo" />
+          <img
+            id="logo"
+            src="/src/images/logoCLA.png"
+            alt="Community Lab Alliance Logo"
+          />
         </a>
-        <h1 className="text-xl font-bold mb-4">Sign Up</h1>
+        <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
 
         {step === 1 && (
-          <form onSubmit={handleSubmit}>
-
+          <form onSubmit={signUpSubmit}>
             <div className="mb-4">
-              <label htmlFor="firstName" className="block text-gray-700 text-sm font-bold mb-1">
+              <label
+                htmlFor="firstName"
+                className="block text-gray-700 text-sm font-bold mb-1"
+              >
                 First Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 id="firstName"
-                value={firstName}
-                onChange={handleFirstNameChange}
+                value={name}
+                onChange={(event) => setName(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="lastName" className="block text-gray-700 text-sm font-bold mb-1">
-                Last Name <span className="text-red-500">*</span>
+              <label
+                htmlFor="surName"
+                className="block text-gray-700 text-sm font-bold mb-2"
+              >
+                Sur Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                id="lastName"
-                value={lastName}
-                onChange={handleLastNameChange}
+                id="surName"
+                value={surname}
+                onChange={(event) => setSurName(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="phoneNumber" className="block text-gray-700 text-sm font-bold mb-1">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 text-sm font-bold mb-1"
+              >
+                Email Address <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+                className={`w-full border ${emailError ? "border-red-500" : "border-gray-300"
+                  } p-2 rounded-lg`}
+              />
+              {emailError && (
+                <p className="text-red-500 text-sm mt-1">{emailError}</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="phoneNumber"
+                className="block text-gray-700 text-sm font-bold mb-1"
+              >
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 id="phoneNumber"
                 value={phoneNumber}
-                onChange={handlePhoneNumberChange}
+                onChange={(event) => setPhoneNumber(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-1">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={handleEmailChange}
-                required
-                className={`w-full border ${emailError ? "border-red-500" : "border-gray-300"} p-2 rounded-lg`}
-              />
-              {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
-            </div>
-            <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-1">
+              <label
+                htmlFor="password"
+                className="block text-gray-700 text-sm font-bold mb-1"
+              >
                 Password <span className="text-red-500">*</span>
               </label>
               <input
                 type="password"
-                id="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={(event) => setPassword(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
             </div>
-
             <button
               type="submit"
               className="w-full bg-[#4CB5AB] text-white py-2 rounded-lg hover:bg-[#389389]"
             >
               Next
-              <FontAwesomeIcon icon={faArrowRight} className="ml-1 align-middle" />
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="ml-1 align-middle"
+              />
             </button>
           </form>
         )}
 
         {step === 2 && (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={signUpSubmit}>
             <div className="mb-4">
               <label
                 htmlFor="addressLine1"
@@ -191,7 +212,7 @@ const Signup = () => {
                 type="text"
                 id="addressLine1"
                 value={addressLine1}
-                onChange={handleAddressLine1Change}
+                onChange={(event) => setAddressLine1(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
@@ -207,40 +228,23 @@ const Signup = () => {
                 type="text"
                 id="addressLine2"
                 value={addressLine2}
-                onChange={handleAddressLine2Change}
+                onChange={(event) => setAddressLine2(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
             </div>
-
             <div className="mb-4">
               <label
                 htmlFor="zipCode"
                 className="block text-gray-700 text-sm font-bold mb-1"
               >
-                ZIP Code <span className="text-red-500">*</span>
+                Zip Code <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 id="zipCode"
                 value={zipCode}
-                onChange={handleZipCodeChange}
-                required
-                className="w-full border border-gray-300 p-2 rounded-lg"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="country"
-                className="block text-gray-700 text-sm font-bold mb-1"
-              >
-                Country <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="country"
-                value={country}
-                onChange={handleCountryChange}
+                onChange={(event) => setzipCode(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
@@ -256,7 +260,7 @@ const Signup = () => {
                 type="text"
                 id="city"
                 value={city}
-                onChange={handleCityChange}
+                onChange={(event) => setCity(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
@@ -272,21 +276,40 @@ const Signup = () => {
                 type="text"
                 id="state"
                 value={state}
-                onChange={handleStateChange}
+                onChange={(event) => setState(event.target.value)}
                 required
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
             </div>
-            <div className="flex mb-3 items-center justify-center">
-              <input
-                type="checkbox"
-                id="terms"
-                className="mr-1 mb-1">
-              </input>
+            <div className="mb-4">
               <label
-                htmlFor="state"
-                className="block text-gray-700 text-sm font-bold mb-1 ">
-                I agree terms and conditions <span className="text-red-500">*</span>
+                htmlFor="country"
+                className="block text-gray-700 text-sm font-bold mb-1"
+              >
+                Country <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="country"
+                value={country}
+                onChange={(event) => setCountry(event.target.value)}
+                required
+                className="w-full border border-gray-300 p-2 rounded-lg"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="checkbox"
+                className="block text-gray-700 text-sm font-bold mb-1"
+              >
+                Acepto terminos y condiciones
+                <input
+                  id="cbox1"
+                  type="checkbox"
+                  checked={checked}
+                  onChange={handleChange}
+                  required
+                ></input>
               </label>
             </div>
             <div className="flex items-center justify-center">
@@ -310,20 +333,23 @@ const Signup = () => {
                  hover:bg-[#389389]"
               >
                 Sign Up
-              </button></div>
+              </button>
+            </div>
           </form>
         )}
 
         <div className="mt-4 flex items-center justify-center">
-          <span className="text-gray-700">Already have an account?</span>
-          <Link to="/SolutionsPage" className="ml-1 text-[#4CB5AB] hover:text-[#389389] hover:underline">
-            Sign In
+          <Link
+            to="/LoginPage"
+            className="ml-1 text-[#b4d334] hover:text-[#b4d334] hover:underline"
+          >
+            Already have an account? Sign In
           </Link>
         </div>
-
       </div>
+      {error && <p>{error}</p>}
     </div>
   );
 };
 
-export default Signup;
+export default SignUp;
