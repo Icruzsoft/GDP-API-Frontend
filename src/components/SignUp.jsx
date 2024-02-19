@@ -17,6 +17,8 @@ const Signup = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [userType, setUserType] = useState(""); // Almacena el tipo de usuario seleccionado
+  const [userTypeError, setUserTypeError] = useState(""); // Mnsaje de error de selección de usuario
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -25,7 +27,6 @@ const Signup = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
   };
@@ -57,7 +58,10 @@ const Signup = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (step === 1) {
-      if (!isValidEmail(email)) {
+      if (!userType) {
+        setUserTypeError("Please select a user type."); // Mensaje de error si no se ha seleccionado ninguna opción
+        return;
+      } if (!isValidEmail(email)) {
         setEmailError("Invalid email address");
         return;
       }
@@ -67,16 +71,18 @@ const Signup = () => {
     }
   };
 
-  const nextStep = () => {
+  /*const nextStep = () => {
     setStep(step + 1);
-  };
-
+  };*/
   const prevStep = () => {
     setStep(step - 1);
   };
-
   const isValidEmail = (email) => {
     return /\S+@\S+\.\S+/.test(email);
+  };
+  const handleUserTypeChange = (event) => {
+    setUserType(event.target.value);
+    setUserTypeError(""); // Restablecer el mensaje de error cuando se selecciona una opción
   };
 
   useEffect(() => {
@@ -96,13 +102,22 @@ const Signup = () => {
         <a href="/HomePage">
           <img id="logo" src="/src/images/logoCLA.png" alt="Community Lab Alliance Logo" />
         </a>
-        <h1 className="text-xl font-bold mb-4">Sign Up</h1>
+        <h1 className="text-xl font-bold mb-4 text-[#2c3441]">Sign Up</h1>
 
         {step === 1 && (
           <form onSubmit={handleSubmit}>
-
             <div className="mb-4">
-              <label htmlFor="firstName" className="block text-gray-700 text-sm font-bold mb-1">
+              <label htmlFor="userType" className="block text-[#2c3441] text-sm font-bold mb-1">
+                Select User Type <span className="text-red-500">*</span>
+              </label>
+              <div id="userType" className="flex items-center mb-2">
+                <input type="radio" id="client" name="userType" value="client" onChange={handleUserTypeChange} checked={userType === "client"} className="mr-2" />
+                <label htmlFor="client" className="mr-4">I'm a customer</label>
+                <input type="radio" id="expert" name="userType" value="expert" onChange={handleUserTypeChange} checked={userType === "expert"} className="mr-2" />
+                <label htmlFor="expert">I'm an expert</label>
+              </div>
+              {userTypeError && <p className="text-red-500 text-sm font-extrabold -mt-2 mb-2">{userTypeError}</p>} {/* Ésye es el mensaje de error en caso de que no se seleccione alguna de las opciones */}
+              <label htmlFor="firstName" className="block text-[#2c3441] text-sm font-bold mb-1">
                 First Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -115,7 +130,7 @@ const Signup = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="lastName" className="block text-gray-700 text-sm font-bold mb-1">
+              <label htmlFor="lastName" className="block text-[#2c3441] text-sm font-bold mb-1">
                 Last Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -128,7 +143,7 @@ const Signup = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="phoneNumber" className="block text-gray-700 text-sm font-bold mb-1">
+              <label htmlFor="phoneNumber" className="block text-[#2c3441] text-sm font-bold mb-1">
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <input
@@ -141,7 +156,7 @@ const Signup = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-1">
+              <label htmlFor="email" className="block text-[#2c3441] text-sm font-bold mb-1">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
@@ -155,7 +170,7 @@ const Signup = () => {
               {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-1">
+              <label htmlFor="password" className="block text-[#2c3441] text-sm font-bold mb-1">
                 Password <span className="text-red-500">*</span>
               </label>
               <input
@@ -167,7 +182,6 @@ const Signup = () => {
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
             </div>
-
             <button
               type="submit"
               className="w-full bg-[#4CB5AB] text-white py-2 rounded-lg hover:bg-[#389389]"
@@ -183,7 +197,7 @@ const Signup = () => {
             <div className="mb-4">
               <label
                 htmlFor="addressLine1"
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[#2c3441] text-sm font-bold mb-1"
               >
                 Address Line 1 <span className="text-red-500">*</span>
               </label>
@@ -199,7 +213,7 @@ const Signup = () => {
             <div className="mb-4">
               <label
                 htmlFor="addressLine2"
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[#2c3441] text-sm font-bold mb-1"
               >
                 Address Line 2 <span className="text-red-500">*</span>
               </label>
@@ -212,11 +226,10 @@ const Signup = () => {
                 className="w-full border border-gray-300 p-2 rounded-lg"
               />
             </div>
-
             <div className="mb-4">
               <label
                 htmlFor="zipCode"
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[#2c3441] text-sm font-bold mb-1"
               >
                 ZIP Code <span className="text-red-500">*</span>
               </label>
@@ -232,7 +245,7 @@ const Signup = () => {
             <div className="mb-4">
               <label
                 htmlFor="country"
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[#2c3441] text-sm font-bold mb-1"
               >
                 Country <span className="text-red-500">*</span>
               </label>
@@ -248,7 +261,7 @@ const Signup = () => {
             <div className="mb-4">
               <label
                 htmlFor="city"
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[#2c3441] text-sm font-bold mb-1"
               >
                 City <span className="text-red-500">*</span>
               </label>
@@ -264,7 +277,7 @@ const Signup = () => {
             <div className="mb-4">
               <label
                 htmlFor="state"
-                className="block text-gray-700 text-sm font-bold mb-1"
+                className="block text-[#2c3441] text-sm font-bold mb-1"
               >
                 State <span className="text-red-500">*</span>
               </label>
@@ -285,7 +298,7 @@ const Signup = () => {
               </input>
               <label
                 htmlFor="state"
-                className="block text-gray-700 text-sm font-bold mb-1 ">
+                className="block text-[#2c3441] text-sm font-bold mb-1 ">
                 I agree terms and conditions <span className="text-red-500">*</span>
               </label>
             </div>
@@ -293,10 +306,10 @@ const Signup = () => {
               <button
                 type="button"
                 onClick={prevStep}
-                className=" bg-gray-300
-                 text-gray-700 
+                className=" bg-[#dadde2]
+                text-black 
                  py-2 px-4 
-                 rounded-lg 
+                 rounded-lg
                  hover:bg-gray-400 mr-2"
               >
                 Back
@@ -315,7 +328,7 @@ const Signup = () => {
         )}
 
         <div className="mt-4 flex items-center justify-center">
-          <span className="text-gray-700">Already have an account?</span>
+          <span className="text-[#2c3441]">Already have an account?</span>
           <Link to="/SolutionsPage" className="ml-1 text-[#4CB5AB] hover:text-[#389389] hover:underline">
             Sign In
           </Link>
