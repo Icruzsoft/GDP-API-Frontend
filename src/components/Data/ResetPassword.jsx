@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const requestOTP = async (email, isReset) => {
     const data = {
         email: email,
@@ -32,7 +31,6 @@ export const resetPassword = async (newPassword, confirmPassword, token) => {
         newPassword: newPassword,
         confirmPassword: confirmPassword
     };
-
     const config = {
         headers: { Authorization: `bearer ${token}` }
     };

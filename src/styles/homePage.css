@@ -1,0 +1,49 @@
+.h1-green {
+  color: #b3d433;
+  font-size: 30px;
+}
+.p-black {
+  color: black;
+  font-size: 22px;
+}
+.rec-testimony {
+  background-color: rgba(242, 242, 242, 0.9);
+  width: 100%;
+  height: 540px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.h1-darkGreen {
+  color: #013a51;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+.rec-testimony__newRec{
+  width: 56%;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.rec-testimony__column{
+  width: 50%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.h2-darkBlue{
+  color: #1F76B7;
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.p-lightGreen{
+  color: #B3D433;
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
