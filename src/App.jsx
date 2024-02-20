@@ -11,7 +11,6 @@ import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import DashboardPage from "./pages/DashboardPage";
 import ForgotPassword from './pages/ForgotPassword';
-import DashboardPage from "./pages/DashboardPage";
 import AppsPage from "./pages/AppsPage";
 import ExpertPage from "./pages/ExpertPage";
 import CustomerPage from "./pages/CustomerPage";
@@ -36,7 +35,6 @@ const App = () => {
           <Route path="/BlogPage" element={<BlogPage />} />
           <Route path="/DashboardPage" element={<DashboardPage />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />}  />
-          <Route path="/DashboardPage" element={<DashboardPage />}  />
           <Route path="/AppsPage" element={<AppsPage />}  />
           <Route path="/ExpertPage" element={<ExpertPage />}  />
           <Route path="/CustomerPage" element={<CustomerPage />}  />
