@@ -39,7 +39,7 @@ const LoginPage = () => {
           />
         </a>
         <h1 className="text-2xl font-bold -mb-1">Log In</h1>
-        <h2 className="text-2xl font-bold mb-4">
+        <h2 className="text-lg font-bold mb-4">
           to access Community Lab Alliance
         </h2>
         <form onSubmit={logInSubmit}>
@@ -75,6 +75,13 @@ const LoginPage = () => {
               className="w-full border border-gray-300 p-2 rounded-lg"
             />
           </div>
+          <button
+            type="submit"
+            className="w-full bg-[#4CB5AB] text-white mb-3 py-2 rounded-lg hover:bg-[#389389] "
+            onClick={logInSubmit}
+          >
+            Log In
+          </button>
           <div className="mb-1">
             <div className="  flex justify-center">
               <label>
@@ -98,13 +105,6 @@ const LoginPage = () => {
               </Link>
             </div>
           </div>
-          <button
-            type="submit"
-            className="w-full bg-[#4CB5AB] text-white mb-3 py-2 rounded-lg hover:bg-[#389389] "
-            onClick={logInSubmit}
-          >
-            LogIn
-          </button>
         </form>
       </div>
       {error && <p>{error}</p>}
