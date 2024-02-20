@@ -1,4 +1,3 @@
-
 import React from "react";
 
 const ContributePage = () => {
@@ -10,3 +9,4 @@ const ContributePage = () => {
 };
 
 export default ContributePage;
+  
