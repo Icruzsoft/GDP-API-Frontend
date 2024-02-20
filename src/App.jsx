@@ -10,7 +10,17 @@ import SolutionsPage from "./pages/SolutionsPage";
 import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import DashboardPage from "./pages/DashboardPage";
-import ForgotPassword from './pages/ForgotPassword'
+import ForgotPassword from './pages/ForgotPassword';
+import DashboardPage from "./pages/DashboardPage";
+import AppsPage from "./pages/AppsPage";
+import ExpertPage from "./pages/ExpertPage";
+import CustomerPage from "./pages/CustomerPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import TaskPage from "./pages/TaskPage";
+import TaskBoardPage from "./pages/TaskBoardPage";
+import PreDiagnosisPage from "./pages/PreDiagnosisPage";
+import BillingPage from "./pages/BillingPage";
+import ReportsPage from "./pages/ReportsPage";
 
 const App = () => {
   return (
@@ -26,6 +36,16 @@ const App = () => {
           <Route path="/BlogPage" element={<BlogPage />} />
           <Route path="/DashboardPage" element={<DashboardPage />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />}  />
+          <Route path="/DashboardPage" element={<DashboardPage />}  />
+          <Route path="/AppsPage" element={<AppsPage />}  />
+          <Route path="/ExpertPage" element={<ExpertPage />}  />
+          <Route path="/CustomerPage" element={<CustomerPage />}  />
+          <Route path="/ProjectsPage" element={<ProjectsPage />}  />
+          <Route path="/TaskPage" element={<TaskPage />}  />
+          <Route path="/TaskBoardPage" element={<TaskBoardPage />}  />
+          <Route path="/PreDiagnosisPage" element={<PreDiagnosisPage />}  />
+          <Route path="/BillingPage" element={<BillingPage />}  />
+          <Route path="/ReportsPage" element={<ReportsPage />}  />
           {/* ... Otras rutas ... */}
         </Routes>
       </Router>
