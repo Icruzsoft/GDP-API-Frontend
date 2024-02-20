@@ -31,16 +31,24 @@ const LoginPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
-        <h1 className="text-2xl font-bold mb-4">
-          Sign in to access Community Lab Alliance
-        </h1>
+        <a href="/HomePage">
+          <img
+            id="logo"
+            src="/src/images/logoCLA.png"
+            alt="Community Lab Alliance Logo"
+          />
+        </a>
+        <h1 className="text-2xl font-bold -mb-1">Log In</h1>
+        <h2 className="text-2xl font-bold mb-4">
+          to access Community Lab Alliance
+        </h2>
         <form onSubmit={logInSubmit}>
           <div className="mb-4">
             <label
               htmlFor="email"
               className="block text-gray-700 text-sm font-bold mb-2"
             >
-              Email Address
+              Email Address <span className="text-red-500">*</span>
             </label>
             <input
               type="email"
@@ -48,7 +56,7 @@ const LoginPage = () => {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required
-              className="w-full border border-gray-300 p-2 rounded"
+              className="w-full border border-gray-300 p-2 rounded-lg"
             />
           </div>
           <div className="mb-4">
@@ -56,7 +64,7 @@ const LoginPage = () => {
               htmlFor="password"
               className="block text-gray-700 text-sm font-bold mb-2"
             >
-              Password
+              Password <span className="text-red-500">*</span>
             </label>
             <input
               type="password"
@@ -64,17 +72,27 @@ const LoginPage = () => {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               required
-              className="w-full border border-gray-300 p-2 rounded"
+              className="w-full border border-gray-300 p-2 rounded-lg"
             />
           </div>
-          <div className="mb-4">
-            <div className="flex justify-between">
-              <Link to="/SignUpPage" className="text-blue-500 hover:underline">
-                Don't have an account? Sign Up
-              </Link>
+          <div className="mb-1">
+            <div className="  flex justify-center">
+              <label>
+                Don't have an account?{" "}
+                <Link
+                  to="/SignUpPage"
+                  className="hover:underline text-base text-[#4CB5AB] hover:text-[#389389]"
+                >
+                  Sign Up
+                </Link>
+              </label>
+            </div>
+          </div>
+          <div className="mb-0">
+            <div className="flex justify-center">
               <Link
                 to="/ForgotPassword"
-                className="text-blue-500 hover:underline"
+                className="text-[#4CB5AB] hover:text-[#389389] hover:underline text-base"
               >
                 Forgot Password
               </Link>
@@ -82,10 +100,10 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            className="w-full bg-[#4CB5AB] text-white mb-3 py-2 rounded-lg hover:bg-[#389389] "
             onClick={logInSubmit}
           >
-            Next
+            LogIn
           </button>
         </form>
       </div>
