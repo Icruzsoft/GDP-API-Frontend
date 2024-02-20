@@ -55,6 +55,14 @@ const NavBar = () => {
             >
               Blog
             </NavLink>
+
+            <NavLink
+              to="/DashboardPage"
+              className="text-gray-700 hover:text-blue-500 transition duration-300"
+            >
+              Dashboard
+            </NavLink>
+
             {/* ... (agregar otros enlaces) */}
           </nav>
 

@@ -1,35 +1,23 @@
 import React from "react";
-import fb from "../images/footer/fb.png";
-import insta from "../images/footer/insta.png";
-import whats from "../images/footer/whats.png";
 import Logo from "../images/footer/Logo.png";
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-4 px-4 grid grid-cols-2 items-center gap-4 w-full">
-      <div className="flex items-center gap-4">
+    <footer className="bg-gray-800 text-white py-4 px-4 items-center gap-4 w-full">
+      <div className="flex items-center gap-4 w-full">
         <img
           src={Logo}
           alt="Community Lab Alliance Logo"
-          className="w-12 h-12 rounded-full"
+          className="w-12 h-12 rounded-full ml-10"
         />
-        <a href="#" className="font-bold text-xl">
+        <a className="font-bold text-gray-200 text-[15px] ml-10 hover:text-gray-100">
           Community Lab Alliance
         </a>
-        <a href="#" className="hover:opacity-75">
+        <a href="https://drive.google.com/file/d/11_DZ7m2lQnkoFVbLEGhag4W_XRqcM-on/view" className="font-bold text-lime-500 text-[15px] ml-72 hover:text-lime-500">
           Aviso de Privacidad
         </a>
-      </div>
-      <div className="flex items-center justify-end gap-4">
-        {" "}
-        <a href="#" className="rounded-full hover:opacity-75 shadow-md">
-          <img src={fb} alt="Facebook" className="w-8 h-8" />
-        </a>
-        <a href="#" className="rounded-full hover:opacity-75 shadow-md">
-          <img src={insta} alt="Instagram" className="w-8 h-8" />
-        </a>
-        <a href="#" className="rounded-full hover:opacity-75 shadow-md">
-          <img src={whats} alt="WhatsApp" className="w-8 h-8" />
+        <a className="font-bold text-gray-200 text-[15px] ml-80 hover:text-gray-100">
+          @2023 Community Lab Alliance
         </a>
       </div>
     </footer>
