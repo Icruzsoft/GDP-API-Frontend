@@ -1,97 +1,105 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBriefcase, faAddressCard } from "@fortawesome/free-solid-svg-icons";
-import Slider from "react-slick";
+import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
+import SliderOne from "../components/homePage-components/homePage-sliderOne";
+import SliderTwo from "../components/homePage-components/homePage-sliderTwo";
+import SliderThree from "../components/homePage-components/homePage-sliderThree";
+import RecentArticles from "../components/homePage-components/homePage-recentArticles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "../images/pexels1.jpg";
-import Image2 from "../images/pexels2.jpg";
-import Image3 from "../images/pexels3.jpg";
+import Image16 from "../images/imghome/Logo13.jpg";
+import Image17 from "../images/imghome/Logo14.jpg";
+import "../styles/homePage.css";
 
-
-const NavBar = () => {
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1, // Mostrar solo una imagen a la vez
-    slidesToScroll: 1,
-  };
-
+const HomePage = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-white shadow">
-      {/* Contenedor superior con barra de navegación y icono de usuario */}
-      <div className="flex items-center h-16 bg-white px-4 border-b">
-        {/* Logo y Nombre de la Empresa a la izquierda con el icono de "briefcase" */}
-        <div className="flex items-center">
-          <FontAwesomeIcon icon={faBriefcase} className="text-2xl mr-2" />
-          <span className="text-2xl">IconoLogo</span>
-        </div>
-        {/* Navegación y Icono de Usuario a la derecha */}
-        <div className="flex items-center space-x-4 ml-auto">
-          {/* separación de botones de Navegación */}
-          <nav className="flex space-x-4">
-            {/* botones de navegación */}
-            <NavLink
-              to="/"
-              className="text-gray-700 hover:text-blue-500 transition duration-300"
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/SolutionsPage"
-              className="text-gray-700 hover:text-blue-500 transition duration-300"
-            >
-              Busco Soluciones
-            </NavLink>
-            <NavLink
-              to="/ContibutePage"
-              className="text-gray-700 hover:text-blue-500 transition duration-300"
-            >
-              Brindo Soluciones
-            </NavLink>
-            <NavLink
-              to="/AboutPage"
-              className="text-gray-700 hover:text-blue-500 transition duration-300"
-            >
-              Nosotros
-            </NavLink>
-            <NavLink
-              to="/BlogPage"
-              className="text-gray-700 hover:text-blue-500 transition duration-300"
-            >
-              Blog
-            </NavLink>
-            {/* ... (agregar otros enlaces) */}
-          </nav>
-
-          {/* Icono de Usuario */}
-          <div>
-            <FontAwesomeIcon icon={faAddressCard} className="text-xl" />
-          </div>
-        </div>
+    <div className="flex flex-col">
+      <div className="flex flex-col min-h-screen bg-white">
+        <NavBar />
+        {/* Div examples carousel */}
+        <SliderOne />
       </div>
-
-      {/* Contenedor inferior con carrusel */}
-      <div className="flex-grow p-4">
-        {/* el classname:"h-96 w-full" son los puntos del carrusel de fotos */}
-        <Slider {...sliderSettings} className="h-96 w-full">
-          {" "}
-          {/* Ajusta la altura según sea necesario */}
-          <div>
-            <img src={Image} alt="Image 1" />
-          </div>
-          <div>
-            <img src={Image2} alt="Image 2" />
-          </div>
-          <div>
-            <img src={Image3} alt="Image 3" />
-          </div>
-          {/* Agrega más elementos según sea necesario */}
-        </Slider>
+      <div className="flex flex-col bg-white shadow mt-8">
+        {/* div allies carousel */}
+        <SliderTwo />
       </div>
+      <div className="flex flex-col bg-white shadow">
+        <br />
+        <br />
+        {/* contribute and solution image */}
+        <div className="flex justify-center mt-8">
+          <img src={Image16} alt="Logo 13" />
+        </div>
+        <br />
+        <br />
+        <center>
+          <h1 className="h1-green">¿Cómo funciona?</h1>
+          <p className="p-black">
+            Somos la única plataforma en español que conecta, gestiona y
+            capacita equipos freelance para ofrecer
+            <br /> soluciones integrales para empresas
+          </p>
+        </center>
+        {/* contact image */}
+        <div className="flex justify-center mt-8">
+          <img src={Image17} alt="Logo 14" />
+        </div>
+        <br />
+        {/* rectangle grey */}
+        <div className="rec-testimony">
+          {/* Testimony text */}
+          <h1 className="h1-darkGreen">Testimonios</h1>
+          {/* personal Rectangle */}
+          <div className="rec-testimony__newRec">
+            {/* Column 1 */}
+            <div className="rec-testimony__column">
+              <h2 className="h2-darkBlue">
+                “Aprendí que no quiero ser programadora toda la vida pero que
+                saber sobre Tecnología me va a ayudar en lo que sea que haga”
+              </h2>
+              <p className="p-lightGreen">
+                (Belém, estudiante de preparatoria)
+              </p>
+              <h2 className="h2-darkBlue">
+                “En este equipo entendí que un científico también puede trabajar
+                fuera del laboratorio y que los ingenieros necesitan aprender
+                más sobre negocios y mercadotecnia”.
+              </h2>
+              <p className="p-lightGreen"> (Francisco- Freelance)</p>
+            </div>
+            {/* Column 2 */}
+            <div className="rec-testimony__column">
+              <h2 className="h2-darkBlue">
+                “Gracias a su programa de digitalización tenemos mejor control
+                de nuestros procesos y documentos, eso nos va a ayudar a crecer
+                más”.
+              </h2>
+              <p className="p-lightGreen">
+                (Ivett, empleada en agencia de viajes)
+              </p>
+              <h2 className="h2-darkBlue">
+                “Los productos que adquirimos en el marketplace de Community Lab
+                Alliance son mejores cada día”.
+              </h2>
+              <p className="p-lightGreen">
+                (Fabian- Gerente en empresa de electrocomponentes)
+              </p>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <center>
+          <h1 className="h1-green">Aliados</h1>
+        </center>
+        {/* div allies logos carousel */}
+        <SliderThree />
+        <br />
+        <br />
+        <RecentArticles />
+      </div>
+      <Footer />
     </div>
   );
 };
-export default NavBar;
+export default HomePage;
