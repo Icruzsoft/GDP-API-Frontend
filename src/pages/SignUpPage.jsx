@@ -21,12 +21,16 @@ const SignUp = () => {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [checked, handleChange] = useState(false);
-
+  const [userType, setUserType] = useState(""); // Almacena el tipo de usuario seleccionado
+  const [userTypeError, setUserTypeError] = useState(""); // Mnsaje de error de selección de usuario
   const signUpSubmit = async (event) => {
     event.preventDefault();
     try {
-
       if (step === 1) {
+        if (!userType) {
+          setUserTypeError("Please select a user type."); // Mensaje de error si no se ha seleccionado ninguna opción
+          return;
+        }
         if (!isValidEmail(email)) {
           setEmailError("Invalid email address");
           return;
@@ -54,19 +58,18 @@ const SignUp = () => {
             city,
             state,
             country,
+            userType,
           }
         );
         if (response.status === 200) {
           console.log(response.data);
           navigate("/LoginPage");
         }
-
       }
     } catch (error) {
       setError("Something's not working");
     }
   };
-
   const nextStep = () => {
     setStep(step + 1);
   };
@@ -74,11 +77,9 @@ const SignUp = () => {
   const prevStep = () => {
     setStep(step - 1);
   };
-
   const isValidEmail = (email) => {
     return /\S+@\S+\.\S+/.test(email);
   };
-
   useEffect(() => {
     const imagen = document.getElementById("logo");
     if (imagen) {
@@ -89,7 +90,10 @@ const SignUp = () => {
       imagen.style.marginBottom = "20px";
     }
   }, []);
-
+  const handleUserTypeChange = (event) => {
+    setUserType(event.target.value);
+    setUserTypeError(""); // Restablecer el mensaje de error cuando se selecciona una opción
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
@@ -105,6 +109,44 @@ const SignUp = () => {
         {step === 1 && (
           <form onSubmit={signUpSubmit}>
             <div className="mb-4">
+              <label
+                htmlFor="userType"
+                className="block text-[#2c3441] text-sm font-bold mb-1"
+              >
+                Select User Type <span className="text-red-500">*</span>
+              </label>
+              <div id="userType" className="flex items-center mb-2">
+                <input
+                  type="radio"
+                  id="client"
+                  name={userType}
+                  value="client"
+                  onChange={handleUserTypeChange}
+                  checked={userType === "client"}
+                  className="mr-2"
+                />
+                <label htmlFor="client" className="mr-4">
+                  I'm a customer
+                </label>
+                <input
+                  type="radio"
+                  id="expert"
+                  name={userType}
+                  value="expert"
+                  onChange={handleUserTypeChange}
+                  checked={userType === "expert"}
+                  className="mr-2"
+                />
+                <label htmlFor="expert" className="mr-4">
+                  I'm an expert
+                </label>
+              </div>
+              {userTypeError && (
+                <p className="text-red-500 text-sm font-extrabold -mt-2 mb-2">
+                  {userTypeError}
+                </p>
+              )}{" "}
+              {/* Éste es el mensaje de error en caso de que no se seleccione alguna de las opciones */}
               <label
                 htmlFor="firstName"
                 className="block text-gray-700 text-sm font-bold mb-1"
@@ -148,8 +190,9 @@ const SignUp = () => {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 required
-                className={`w-full border ${emailError ? "border-red-500" : "border-gray-300"
-                  } p-2 rounded-lg`}
+                className={`w-full border ${
+                  emailError ? "border-red-500" : "border-gray-300"
+                } p-2 rounded-lg`}
               />
               {emailError && (
                 <p className="text-red-500 text-sm mt-1">{emailError}</p>

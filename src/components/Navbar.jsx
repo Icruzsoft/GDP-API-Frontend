@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
-import LogoH from "../images/homePage/Logo150.png";
+import LogoH from "../images/logoCLA.png";
 
 const NavBar = () => {
   return (
@@ -11,13 +11,20 @@ const NavBar = () => {
       <div className="flex items-center h-16 bg-white px-4 border-b">
         {/* Logo y Nombre de la Empresa a la izquierda con el icono de "briefcase" */}
         <div className="flex items-center">
-          <img src={LogoH} className="h-15 w-4/5" alt="logo oficial Horizontal" />
+          <img src={LogoH} className="h-12" alt="logo oficial Horizontal" />
         </div>
         {/* Navegación y Icono de Usuario a la derecha */}
         <div className="flex items-center space-x-4 ml-auto">
           {/* separación de botones de Navegación */}
           <nav className="flex space-x-4">
             {/* botones de navegación */}
+            {/* eliminate Navlink to DashboardPage when it gets useless */}
+            <NavLink
+              to="DashboardPage"
+              className="text-gray-700 hover:text-blue-500 transition duration-300"
+            >
+              Dashboard
+            </NavLink>
             <NavLink
               to="/"
               className="text-gray-700 hover:text-blue-500 transition duration-300"
