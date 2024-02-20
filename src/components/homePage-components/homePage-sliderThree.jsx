@@ -1,29 +1,28 @@
 import React from "react";
 import Slider from "react-slick";
-import Image4 from "../images/imghome/Logo1.jpg";
-import Image5 from "../images/imghome/Logo2.jpg";
-import Image6 from "../images/imghome/Logo3.jpg";
-import Image7 from "../images/imghome/Logo4.jpg";
-import Image8 from "../images/imghome/Logo5.jpg";
-import Image9 from "../images/imghome/Logo6.jpg";
-import Image10 from "../images/imghome/Logo7.jpg";
-import Image11 from "../images/imghome/Logo8.jpg";
-import Image12 from "../images/imghome/Logo9.jpg";
-import Image13 from "../images/imghome/Logo10.jpg";
-import Image14 from "../images/imghome/Logo11.jpg";
-import Image15 from "../images/imghome/Logo12.jpg";
+import Image4 from "../../images/imghome/Logo1.jpg";
+import Image5 from "../../images/imghome/Logo2.jpg";
+import Image6 from "../../images/imghome/Logo3.jpg";
+import Image7 from "../../images/imghome/Logo4.jpg";
+import Image8 from "../../images/imghome/Logo5.jpg";
+import Image9 from "../../images/imghome/Logo6.jpg";
+import Image10 from "../../images/imghome/Logo7.jpg";
+import Image11 from "../../images/imghome/Logo8.jpg";
+import Image12 from "../../images/imghome/Logo9.jpg";
+import Image13 from "../../images/imghome/Logo10.jpg";
+import Image14 from "../../images/imghome/Logo11.jpg";
+import Image15 from "../../images/imghome/Logo12.jpg";
 
-const SliderThree = ()=>{
+const SliderThree = () => {
   const sliderSettingsThreePerSlide = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4, // Mostrar dos imágenes a la vez
-    slidesToScroll: 4, // Desplazar dos imágenes a la vez
+    slidesToShow: 4, // show four elements at once
+    slidesToScroll: 4, // move four elements at once
     autoplay: true,
-    autoplaySpeed: 3000, // Cambia la imagen cada 2 segundos
+    autoplaySpeed: 3000, // change the slide every 2 seconds
   };
-
   return (
     <div className="flex justify-center mt-8">
       <Slider
@@ -46,5 +45,4 @@ const SliderThree = ()=>{
     </div>
   );
 };
-
 export default SliderThree;

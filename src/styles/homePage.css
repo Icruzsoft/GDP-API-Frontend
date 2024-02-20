@@ -21,7 +21,7 @@
   font-size: 35px;
   margin-bottom: 20px;
 }
-.rec-testimony__newRec{
+.rec-testimony__newRec {
   width: 56%;
   height: 400px;
   display: flex;
@@ -30,20 +30,45 @@
   align-items: center;
   flex-wrap: wrap;
 }
-.rec-testimony__column{
+.rec-testimony__column {
   width: 50%;
   margin-bottom: 20px;
   text-align: center;
 }
-.h2-darkBlue{
-  color: #1F76B7;
+.h2-darkBlue {
+  color: #1f76b7;
   font-size: 18px;
   font-style: italic;
   margin-bottom: 20px;
 }
-.p-lightGreen{
-  color: #B3D433;
+.p-lightGreen {
+  color: #b3d433;
   font-size: 18px;
   font-style: italic;
   margin-bottom: 20px;
+}
+/* recentArcticles */
+.backg-cont {
+  background-color: rgba(242, 242, 242, 0.9);
+  width: 75%;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.cont-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.img-arc {
+  max-width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+.p-brown {
+  color: #333;
+  font-size: 15px;
 }

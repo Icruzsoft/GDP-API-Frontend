@@ -1,8 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
-import Image from "../images/pexels1.jpg";
-import Image2 from "../images/pexels2.jpg";
-import Image3 from "../images/pexels3.jpg";
+import Image from "../../images/pexels1.jpg";
+import Image2 from "../../images/pexels2.jpg";
+import Image3 from "../../images/pexels3.jpg";
 
 const SliderOne = () => {
   const sliderSettings = {
@@ -17,9 +17,8 @@ const SliderOne = () => {
 
   return (
     <div className="p-4 bg-white mb-8 overflow-hidden">
-      {/* el classname:"h-96 w-full" son los puntos del carrusel de fotos */}
       <Slider {...sliderSettings} className="h-120 w-full m-8">
-        {/* Ajusta la altura según sea necesario */}
+        {/* change the height if it's necesary*/}
         <div>
           <img src={Image} alt="Image 1" />
         </div>
@@ -29,7 +28,7 @@ const SliderOne = () => {
         <div>
           <img src={Image3} alt="Image 3" />
         </div>
-        {/* Agrega más elementos según sea necesario */}
+        {/* add more elements if it's necesary */}
       </Slider>
     </div>
   );

@@ -1,10 +1,11 @@
 import React from "react";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
-import SliderOne from "../components/homePage-sliderOne";
-import SliderTwo from "../components/homePage-sliderTwo";
-import SliderThree from "../components/homePage-sliderThree";
-import RecentArticles from "../components/homePage-recentArticles";
+import SliderOne from "../components/homePage-components/homePage-sliderOne";
+import SliderTwo from "../components/homePage-components/homePage-sliderTwo";
+import SliderThree from "../components/homePage-components/homePage-sliderThree";
+import RecentArticles from "../components/homePage-components/homePage-recentArticles";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image16 from "../images/imghome/Logo13.jpg";
