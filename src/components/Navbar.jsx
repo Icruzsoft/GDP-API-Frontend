@@ -19,12 +19,12 @@ const NavBar = () => {
           <nav className="flex space-x-4">
             {/* botones de navegación */}
             {/* eliminate Navlink to DashboardPage when it gets useless */}
-            <NavLink
+            {/* <NavLink
               to="DashboardPage"
               className="text-gray-700 hover:text-blue-500 transition duration-300"
             >
               Dashboard
-            </NavLink>
+            </NavLink> */}
             <NavLink
               to="/"
               className="text-gray-700 hover:text-blue-500 transition duration-300"
