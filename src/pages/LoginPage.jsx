@@ -24,7 +24,7 @@ const LoginPage = () => {
       } else {
       }
     } catch (error) {
-        setError(error.message);
+      setError(error.message);
     }
   };
 
@@ -73,7 +73,7 @@ const LoginPage = () => {
                 Don't have an account? Sign Up
               </Link>
               <Link
-                to="/reset-password"
+                to="/ForgotPassword"
                 className="text-blue-500 hover:underline"
               >
                 Forgot Password
