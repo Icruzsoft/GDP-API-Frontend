@@ -36,7 +36,7 @@ const CreateProjectPage = () => {
         files,
       });
       if (response.status === 200) {
-        console.log(response.data);
+
         Navigate("/ProjectsPage");
         setShowForm(false); // Ocultar formulario
       }
@@ -44,7 +44,7 @@ const CreateProjectPage = () => {
       setError("Invalid Request");
     }
   };
-  
+
   return (
     <div>
       <button
@@ -273,14 +273,7 @@ const CreateProjectPage = () => {
                       >
                         Upload Files
                       </label>
-                      <input
-                        type="file"
-                        id="files"
-                        name="files"
-                        multiple
-                        onChange={handleFileChange}
-                        className="mt-1 p-2 border rounded-md w-full"
-                      />
+
                     </div>
                   </div>
                 </div>
