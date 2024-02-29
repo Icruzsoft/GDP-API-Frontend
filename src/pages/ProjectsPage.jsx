@@ -32,6 +32,7 @@ const ProjectPage = () => {
   return (
     <div>
       <Header/>
+      
       <SearchButton/>
       <br/><br/>
       

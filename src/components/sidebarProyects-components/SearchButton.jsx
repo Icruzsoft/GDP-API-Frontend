@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTableCells } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/projects.css";
+import { useNavigate } from "react-router-dom";
 
 const ButtonSearch = () => {
   // Estado para almacenar el valor del Client ID ingresado por el usuario
@@ -9,11 +12,33 @@ const ButtonSearch = () => {
   // Estado para almacenar la designación seleccionada por el usuario
   const [designation, setDesignation] = useState("");
 
-  return (
+  const [error, setError] = useState("");
+  const Navigate= useNavigate();
+  const Projectmenu = ()=>{
+    try{
+      Navigate ("/Projectmenu")
+      } catch (error) {
+      setError("somenthins is wrong")
+      }
+  };
+    return (
     <div>
       <div className="form-container">
-        <h1 className='ml-15'>Projects</h1> <br/>
-        <h2 className='ml-10'>Dashboard</h2> <br/>
+        <h1 className='ml-15'>Projects</h1> 
+
+        <div className="flex justify-end px-80 pb-1 h-15 ml-20"> 
+          <button className="bg-white border border-[#E3E3E3] mx-1 rounded-lg w-auto flex justify-center items-center">
+          <FontAwesomeIcon icon={faTableCells} className="" />
+          </button>
+          <button onClick={Projectmenu} className="bg-white border border-[#E3E3E3] mx-1 rounded-lg w-auto flex justify-center items-center">
+            <FontAwesomeIcon icon={faBars} className="" />
+          </button>
+          <button className="bg-[#FF9B44] border-transparent text-white mx-1 rounded-full w-auto flex justify-center items-center">
+          Create Project
+          </button>
+        </div>
+
+        <h2 className='ml-23'>Dashboard</h2> <br/>
         
         {/* Casilla de Client ID */}
         <input
