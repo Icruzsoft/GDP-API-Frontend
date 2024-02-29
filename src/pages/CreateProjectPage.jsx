@@ -12,11 +12,9 @@ const CreateProjectPage = () => {
     event.preventDefault();
     setShowForm(true);
   };
-
   const closeForm = () => {
     setShowForm(false);
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -36,7 +34,6 @@ const CreateProjectPage = () => {
         files,
       });
       if (response.status === 200) {
-        console.log(response.data);
         Navigate("/ProjectsPage");
         setShowForm(false); // Ocultar formulario
       }
@@ -44,7 +41,7 @@ const CreateProjectPage = () => {
       setError("Invalid Request");
     }
   };
-  
+
   return (
     <div>
       <button
@@ -53,7 +50,6 @@ const CreateProjectPage = () => {
       >
         Create Project
       </button>
-
       {/* Formulario de creación de proyecto */}
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
@@ -84,7 +80,6 @@ const CreateProjectPage = () => {
                         className="mt-1 p-2 border rounded-md w-full"
                       />
                     </div>
-
                     <div className="mb-4">
                       <label
                         htmlFor="startDate"
@@ -117,7 +112,6 @@ const CreateProjectPage = () => {
                         <option value="opcion3">Opción 3</option>
                       </select>
                     </div>
-
                     <div className="mb-4">
                       <label
                         htmlFor="subcategories"
@@ -135,7 +129,6 @@ const CreateProjectPage = () => {
                         <option value="opcion3">Opción 3</option>
                       </select>
                     </div>
-
                     <div className="mb-4 flex">
                       <div className="w-1/2 mr-2">
                         <label
@@ -168,7 +161,6 @@ const CreateProjectPage = () => {
                         </select>
                       </div>
                     </div>
-
                     <div className="mb-4">
                       <label
                         htmlFor="projectLeader"
@@ -249,7 +241,6 @@ const CreateProjectPage = () => {
                         <option value="option3">Low</option>
                       </select>
                     </div>
-
                     <div className="mb-4">
                       <label
                         htmlFor="description"
@@ -264,7 +255,6 @@ const CreateProjectPage = () => {
                         className="mt-1 p-2 border rounded-md w-full"
                       ></textarea>
                     </div>
-
                     {/* Sección para subir archivos */}
                     <div className="mb-4">
                       <label
@@ -273,18 +263,9 @@ const CreateProjectPage = () => {
                       >
                         Upload Files
                       </label>
-                      <input
-                        type="file"
-                        id="files"
-                        name="files"
-                        multiple
-                        onChange={handleFileChange}
-                        className="mt-1 p-2 border rounded-md w-full"
-                      />
                     </div>
                   </div>
                 </div>
-
                 <div className="flex justify-center">
                   {" "}
                   {/* Este div centra el botón de submit */}
