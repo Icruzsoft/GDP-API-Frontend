@@ -4,6 +4,7 @@ import { faSort, faSortUp, faSortDown, faBars, faTableCells, } from "@fortawesom
 import StatusDropdown from "../components/homePage-components/StatusDropdown";
 import PriorityDropdown from "../components/homePage-components/PriorityDropdown";
 import ActionDropdown from "../components/homePage-components/ActionDropdown";
+import CreateProjectButton from "../components/homePage-components/CreateProjectButton";
 
 const Dashboard = () => {
   const [sortBy, setSortBy] = useState(null);
@@ -62,6 +63,13 @@ const Dashboard = () => {
     },
   ];
 
+  const openForm= () => {
+    setShowForm(true);
+  }
+  const closeForm = () => {
+    setShowForm(false);
+  };
+
   const handleSort = (field) => {
     if (sortBy === field) {
       // Cambiar la dirección de ordenamiento si ya estamos ordenando por la misma columna
@@ -97,7 +105,7 @@ const Dashboard = () => {
   return (
     <form>
       <h1>Ejemplo</h1>
-      <div className="flex justify-end px-10 pb-5 h-14">
+      <div className="flex justify-end px-10 pb-5">
         <button className="bg-white border border-[#E3E3E3] mx-1 rounded-lg w-auto flex justify-center items-center">
           <FontAwesomeIcon icon={faTableCells} className="" />
         </button>
@@ -105,12 +113,12 @@ const Dashboard = () => {
         <button className="bg-white border border-[#E3E3E3] mx-1 rounded-lg w-auto flex justify-center items-center">
           <FontAwesomeIcon icon={faBars} className="" />
         </button>
-        <button className="bg-[#FF9B44] border-transparent text-white mx-1 rounded-full w-auto flex justify-center items-center">
-          Create Project
-        </button>
+
+        <CreateProjectButton></CreateProjectButton>
+
       </div>
 
-      <div className=" overflow-auto w-3/4 mx-auto border-gray-500 rounded-xl">
+      <div className=" overflow-auto mx-auto border-gray-500 rounded-xl">
         <table className="table-auto w-full text-left ">
           <thead>
             <tr className="">
@@ -307,8 +315,13 @@ const Dashboard = () => {
               </tr>
             ))}
           </tbody>
+          
         </table>
+        
       </div>
+
+
+      
     </form>
   );
 };
