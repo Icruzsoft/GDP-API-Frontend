@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const CreateProjectButton = () => {
     const [showForm, setShowForm] = useState(false);
-
+    const [error, setError] = useState("");
     const openForm = (event) => {
         event.preventDefault();
         setShowForm(true);
@@ -14,18 +15,37 @@ const CreateProjectButton = () => {
         setShowForm(false);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Lógica para enviar los datos del formulario
-        setShowForm(false); // Oculta el formulario después del submit
-    };
+        try {
+            const response = await axios.post(
+                "http://localhost:5153/api",
+                {
+                    projectName,
+                    startDate,
+                    categories,
+                    subcategories,
+                    rate,
+                    number,
+                    options,
+                    projectLeader,
+                    client,
+                    endDate,
+                    priority,
+                    description,
+                    files,
+                }
+            );
+            if (response.status === 200) {
+                console.log(response.data);
+                navigate("/ProjectsPage");
+                setShowForm(false); // Ocultar formulario
+            };
 
-    const handleFileChange = (event) => {
-        const fileList = event.target.files;
-        const fileArray = Array.from(fileList);
-        setFiles(fileArray);
-    };
-
+        } catch (error) {
+            setError("Invalid Request")
+        }
+    }
     return (
         <div>
             <button className="bg-[#FF9B44] border-transparent text-white mx-1 rounded-full flex justify-center items-center" onClick={openForm}>
@@ -167,6 +187,7 @@ const CreateProjectButton = () => {
                     </div>
                 </div>
             )}
+            {error && <p>{error}</p>}
         </div>
     );
 };
